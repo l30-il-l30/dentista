@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina non trovata | Studio Dentistico Sant'Andrea</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="img/logo.svg" alt="Studio Dentistico Sant'Andrea">
+    </a>
+  </div>
+</header>
+
+<main class="error-main">
+  <section class="error-section">
+    <div class="container">
+      <div class="error-content">
+        <h1>404</h1>
+        <h2>Pagina non trovata</h2>
+        <p>Sembra che la pagina che stai cercando non esista o sia stata spostata.</p>
+        <a href="index.html" class="btn btn-primary">Torna alla homepage</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p id="copyright"></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  copyright.innerHTML = `&copy; ${new Date().getFullYear()} Studio Dentistico Sant'Andrea. Tutti i diritti riservati.`;
+</script>
+</body>
+</html>
