@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         L.marker([41.2289786, 16.490343], {icon: dentalIcon})
             .addTo(map)
-            .bindPopup('Studio Dentistico Sant\'Andrea<br>Via Sant\'Andrea, 123')
+            .bindPopup('Studio Dentistico Sant\'Andrea<br> Via don Tonino Bello, 5')
             .openPopup();
     }
 })
