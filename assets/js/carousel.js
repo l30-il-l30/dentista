@@ -36,7 +36,7 @@ const initTreatmentsCarousel = () => {
             currentIndex = Math.max(0, Math.min(currentIndex, treatmentCards.length - visibleCards));
         }
 
-        const offset = -currentIndex * (cardWidth + 16);
+        const offset = -currentIndex * (cardWidth + 20);
 
         if (animate) {
             isAnimating = true;

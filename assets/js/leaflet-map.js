@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }).addTo(map);
 
         const dentalIcon = L.icon({
-            iconUrl: 'img/ping.svg',
+            iconUrl: 'assets/img/ping.svg',
             iconSize: [32, 32],
             iconAnchor: [16, 32],
             popupAnchor: [0, -32]
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         L.marker([41.2289786, 16.490343], {icon: dentalIcon})
             .addTo(map)
-            .bindPopup('Studio Dentistico Sant\'Andrea<br> Via don Tonino Bello, 5')
+            .bindPopup("Studio Dentistico Sant'Andrea<br> Via don Tonino Bello, 5")
             .openPopup();
     }
 })
