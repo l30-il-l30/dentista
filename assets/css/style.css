@@ -15,9 +15,6 @@
     --radius: 8px;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
-  font-weight: 700;
-}
 
 * {
   margin: 0;
@@ -1437,15 +1434,6 @@ address {
   position: relative;
 }
 
-.about-section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(6, 131, 157, 0.5), transparent);
-}
 
 /* ==================== */
 /* SERVICES SECTION */
