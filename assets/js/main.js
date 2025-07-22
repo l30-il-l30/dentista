@@ -1,31 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Hamburger menu
+    // Header and Navigation
     const hamburger = document.querySelector('.hamburger');
     const navList = document.querySelector('.nav-list');
     const body = document.body;
+    const navLinks = document.querySelectorAll('.nav-list a');
 
     if (hamburger) {
+        navLinks.forEach((link, index) => {
+            link.parentElement.style.setProperty('--i', index);
+        });
+
         hamburger.addEventListener('click', function(e) {
             e.stopPropagation();
             this.classList.toggle('active');
             navList.classList.toggle('active');
             body.classList.toggle('no-scroll');
+
+            const isExpanded = this.classList.contains('active');
+            this.setAttribute('aria-expanded', isExpanded);
         });
 
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.nav') && !e.target.closest('.hamburger')) {
-                hamburger.classList.remove('active');
-                navList.classList.remove('active');
-                body.classList.remove('no-scroll');
+                closeMenu();
             }
         });
 
-        const navLinks = document.querySelectorAll('.nav-list a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navList.classList.remove('active');
-                body.classList.remove('no-scroll');
+                closeMenu();
             });
         });
 
@@ -34,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.scrollTo(0, 0);
             }
         });
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navList.classList.remove('active');
+            body.classList.remove('no-scroll');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
     }
 
     // Header scroll effect
@@ -59,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight + 80;
 
                 window.scrollTo({
                     top: targetPosition,
