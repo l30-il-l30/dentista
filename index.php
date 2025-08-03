@@ -1,3 +1,10 @@
+<?php
+    session_start();
+
+    $data = file_get_contents("./data/treatments.json");
+    $json = json_decode($data, true);
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -80,7 +87,7 @@
 
       <!-- Colonna Testo -->
       <div class="about-content">
-        <h2 class="section-title">Dott.ssa Grazia Diodovich</h2>
+<!--        <h2 class="section-title">Dott.ssa Grazia Diodovich</h2>-->
         
         <div class="about-text">
           <div class="professional-info">
@@ -130,65 +137,17 @@
       <div class="treatments-carousel">
         <div class="carousel-track-container">
           <div class="carousel-track">
-            <div class="treatment-card">
-              <div class="treatment-image">
-                <img src="assets/img/treatments/1.jpg" alt="Igiene dentale" loading="lazy">
-              </div>
-              <div class="treatment-content">
-                <h3>IGIENE E PREVENZIONE</h3>
-                <p>Pulizie professionali, fluoroprofilassi e programmi personalizzati per mantenere la salute dei tuoi denti.</p>
-              </div>
-            </div>
-
-            <div class="treatment-card">
-              <div class="treatment-image">
-                <img src="assets/img/treatments/2.jpg" alt="Otturazioni" loading="lazy">
-              </div>
-              <div class="treatment-content">
-                <h3>ODONTOIATRIA CONSERVATIVA</h3>
-                <p>Otturazioni estetiche in composito per curare le carie preservando la struttura dentale.</p>
-              </div>
-            </div>
-
-            <div class="treatment-card">
-              <div class="treatment-image">
-                <img src="assets/img/treatments/3.jpg" alt="Sbiancamento" loading="lazy">
-              </div>
-              <div class="treatment-content">
-                <h3>SBIANCAMENTO DENTALE</h3>
-                <p>Trattamenti sbiancanti professionali per un sorriso più luminoso e naturale.</p>
-              </div>
-            </div>
-
-            <div class="treatment-card">
-              <div class="treatment-image">
-                <img src="assets/img/treatments/4.jpg" alt="Protesi" loading="lazy">
-              </div>
-              <div class="treatment-content">
-                <h3>PROTESI DENTARIE</h3>
-                <p>Soluzioni fisse e mobili per ripristinare la funzione masticatoria e l'estetica del sorriso.</p>
-              </div>
-            </div>
-
-            <div class="treatment-card">
-              <div class="treatment-image">
-                <img src="assets/img/treatments/5.jpg" alt="Impianti" loading="lazy">
-              </div>
-              <div class="treatment-content">
-                <h3>IMPLANTOLOGIA</h3>
-                <p>Impianti dentali di alta qualità per sostituire i denti mancanti con soluzioni permanenti.</p>
-              </div>
-            </div>
-
-            <div class="treatment-card">
-              <div class="treatment-image">
-                <img src="assets/img/treatments/6.jpg" alt="Ortodonzia" loading="lazy">
-              </div>
-              <div class="treatment-content">
-                <h3>ORTODONZIA</h3>
-                <p>Apparecchi fissi e invisibili per allineare i denti e migliorare l'occlusione.</p>
-              </div>
-            </div>
+            <?php foreach($json as $index => $content): ?>
+                <a href="./pages/service.php?i=<?php echo htmlspecialchars($index+1) ?>" class="treatment-card">
+                    <div class="treatment-image">
+                        <img src="assets/img/treatments/<?php echo htmlspecialchars($index+1) ?>.jpg" alt="<?php echo htmlspecialchars($content["alt"]) ?>" loading="lazy">
+                    </div>
+                    <div class="treatment-content">
+                        <h3><?php echo htmlspecialchars($content["title"]) ?></h3>
+                        <p><?php echo htmlspecialchars($content["content"]) ?></p>
+                    </div>
+                </a>
+            <?php endforeach; ?>
           </div>
         </div>
 
@@ -276,24 +235,11 @@
       <p class="section-subtitle">Uno spazio accogliente e professionale pensato per il tuo comfort</p>
       
       <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="assets/img/logo.jpg" alt="Attrezzature all'avanguardia">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/img/atmosfera/studio_esterno.jpg" alt="Ambiente dello studio dentistico">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/img/atmosfera/home2.jpg" alt="Sala d'attesa confortevole">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/img/atmosfera/studio_interno.jpg" alt="Sala operatoria moderna">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/img/atmosfera/salotto.jpg" alt="Dettaglio arredamento">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/img/atmosfera/interno.jpg" alt="Area interna">
-        </div>
+        <?php for($i = 0; $i <6; $i++): ?>
+          <div class="gallery-item">
+              <img src="assets/img/atmosfera/<?php echo htmlspecialchars($i+1) ?>.jpg" alt="img">
+          </div>
+        <?php endfor; ?>
       </div>
     </div>
   </section>
@@ -457,7 +403,6 @@
 <script src="assets/js/preventivoEmail.js"></script>
 <script src="assets/js/toast.js"></script>
 <script src="assets/js/carousel.js"></script>
-<script src="assets/js/readmore.js"></script>
 
 <div class="whatsapp-float">
   <a href="https://wa.me/393488585578" target="_blank" rel="noopener noreferrer" aria-label="Contattaci su WhatsApp">
