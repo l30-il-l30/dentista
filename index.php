@@ -75,57 +75,51 @@
   </section>
 
 
- <section id="about" class="section about-section">
-  <div class="container">
-    <div class="about-grid">
-      <!-- Colonna Immagine (tonda) -->
-      <div class="about-image">
-        <div class="profile-frame">
-          <img src="assets/img/dottoressa.jpg" alt="Dott.ssa Grazia Diodovich" class="profile-img">
+    <section id="about" class="section about-section">
+        <div class="about-grid">
+            <!-- Colonna Immagine (tonda) -->
+            <div class="about-image">
+                <div class="profile-frame">
+                    <img src="assets/img/dottoressa.jpg" alt="Dott.ssa Grazia Diodovich" class="profile-img">
+                </div>
+            </div>
+
+            <!-- Colonna Testo -->
+            <div class="about-content">
+                <div class="professional-info">
+                    <p><strong>Laurea in Odontoiatria e Protesi dentaria</strong><br>
+                        Università degli Studi di Bari - 110 e lode</p>
+
+                    <p><strong>Specializzazione in Chirurgia Odontostomatologica</strong><br>
+                        Università degli Studi di Torino - Massimo dei voti</p>
+                </div>
+
+                <div class="qualifications">
+                    <h3 class="qualification-title">Perfezionamenti:</h3>
+                    <ul class="qualification-list">
+                        <li><span class="qualification-name">Endodonzia</span> - Università di Pescara</li>
+                        <li><span class="qualification-name">Medicina e Odontoiatria forense</span> - Università di Pescara</li>
+                        <li><span class="qualification-name">Ortodonzia</span> - Università di Napoli</li>
+                        <li><span class="qualification-name">Omeopatia e omotossicologia</span> - Università di Bari, Roma e Baden Baden</li>
+                    </ul>
+                </div>
+
+                <div class="experience">
+                    <p>Esercita la professione con <strong>passione e dedizione da oltre 30 anni</strong> presso lo Studio Dentistico Sant'Andrea, offrendo:</p>
+                    <ul class="service-list">
+                        <li>Approccio personalizzato</li>
+                        <li>Tecnologie all'avanguardia</li>
+                        <li>Cure complete e su misura</li>
+                        <li>Massima attenzione al comfort</li>
+                    </ul>
+                </div>
+
+                <div class="signature-container">
+                    <div class="signature">Dott.ssa Grazia Diodovich</div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Colonna Testo -->
-      <div class="about-content">
-<!--        <h2 class="section-title">Dott.ssa Grazia Diodovich</h2>-->
-        
-        <div class="about-text">
-          <div class="professional-info">
-            <p><strong>Laurea in Odontoiatria e Protesi dentaria</strong><br>
-            Università degli Studi di Bari - 110 e lode</p>
-
-            <p><strong>Specializzazione in Chirurgia Odontostomatologica</strong><br>
-            Università degli Studi di Torino - Massimo dei voti</p>
-          </div>
-
-          <div class="qualifications">
-            <h3 class="qualification-title">Perfezionamenti:</h3>
-            <ul class="qualification-list">
-              <li><span class="qualification-name">Endodonzia</span> - Università di Pescara</li>
-              <li><span class="qualification-name">Medicina e Odontoiatria forense</span> - Università di Pescara</li>
-              <li><span class="qualification-name">Ortodonzia</span> - Università di Napoli</li>
-              <li><span class="qualification-name">Omeopatia e omotossicologia</span> - Università di Bari, Roma e Baden Baden</li>
-            </ul>
-          </div>
-
-          <div class="experience">
-            <p>Esercita la professione con <strong>passione e dedizione da oltre 30 anni</strong> presso lo Studio Dentistico Sant'Andrea, offrendo:</p>
-            <ul class="service-list">
-              <li>Approccio personalizzato</li>
-              <li>Tecnologie all'avanguardia</li>
-              <li>Cure complete e su misura</li>
-              <li>Massima attenzione al comfort</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="signature-container">
-          <div class="signature">Dott.ssa Grazia Diodovich</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
   <section id="services" class="section treatments-section">
     <div class="treatments-container">
