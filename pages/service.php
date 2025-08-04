@@ -80,78 +80,7 @@ $treatment = $treatments[$index];
             <div class="description-content">
                 <h2 class="section-title">Processo di Trattamento</h2>
                 <div class="description-text">
-                    <?php if($treatment['title'] == "IGIENE E PREVENZIONE"): ?>
-                        <p>Il nostro approccio all'igiene dentale e alla prevenzione è completo e personalizzato per ogni paziente. Il processo include:</p>
-                        <ul>
-                            <li>Valutazione iniziale dello stato di salute orale</li>
-                            <li>Pulizia professionale con strumentazione ultrasonica</li>
-                            <li>Rimozione del tartaro sopra e sotto gengivale</li>
-                            <li>Lucidatura dei denti per prevenire l'accumulo di placca</li>
-                            <li>Fluoroprofilassi per rinforzare lo smalto</li>
-                            <li>Consigli personalizzati per l'igiene domiciliare</li>
-                        </ul>
-                        <p>Raccomandiamo sedute di igiene professionale ogni 6-12 mesi a seconda delle necessità individuali.</p>
-
-                    <?php elseif($treatment['title'] == "ODONTOIATRIA CONSERVATIVA"): ?>
-                        <p>La nostra odontoiatria conservativa mira a preservare il dente naturale attraverso tecniche minimamente invasive:</p>
-                        <ul>
-                            <li>Diagnosi precoce delle lesioni cariose con tecnologia digitale</li>
-                            <li>Rimozione del tessuto cariato con massimo risparmio di struttura sana</li>
-                            <li>Ricostruzione con materiali compositi estetici</li>
-                            <li>Adesione stratificata per garantire durata e resistenza</li>
-                            <li>Finitura e lucidatura per ripristinare la naturale anatomia</li>
-                        </ul>
-                        <p>Utilizziamo solo materiali di alta qualità certificati per garantire risultati duraturi.</p>
-
-                    <?php elseif($treatment['title'] == "SBIANCAMENTO DENTALE"): ?>
-                        <p>Il nostro trattamento di sbiancamento dentale professionale offre risultati visibili in poche sedute:</p>
-                        <ul>
-                            <li>Valutazione iniziale del colore e dello stato dei denti</li>
-                            <li>Pulizia professionale preliminare</li>
-                            <li>Applicazione di gel sbiancante ad alta concentrazione</li>
-                            <li>Attivazione con luce LED per potenziare l'effetto</li>
-                            <li>Idratazione e desensibilizzazione post-trattamento</li>
-                            <li>Kit di mantenimento per risultati prolungati</li>
-                        </ul>
-                        <p>Lo sbiancamento è sicuro e controllato, con risultati che possono schiarire i denti fino a 8 tonalità.</p>
-
-                    <?php elseif($treatment['title'] == "PROTESI DENTARIE"): ?>
-                        <p>Le nostre soluzioni protesiche sono personalizzate per ripristinare funzione ed estetica:</p>
-                        <ul>
-                            <li>Analisi digitale della masticazione e dell'occlusione</li>
-                            <li>Progettazione CAD/CAM delle protesi</li>
-                            <li>Scelta tra corone in zirconia, disilicato di litio o metallo-ceramica</li>
-                            <li>Protesi mobili con attacchi di precisione</li>
-                            <li>Prove estetiche per garantire un risultato naturale</li>
-                            <li>Applicazione e regolazioni finali</li>
-                        </ul>
-                        <p>Utilizziamo solo materiali di prima qualità certificati per garantire comfort e durata.</p>
-
-                    <?php elseif($treatment['title'] == "IMPLANTOLOGIA"): ?>
-                        <p>La nostra procedura implantologica segue protocolli rigorosi per massimizzare il successo:</p>
-                        <ul>
-                            <li>Diagnostica avanzata con CBCT 3D</li>
-                            <li>Pianificazione digitale della posizione implantare</li>
-                            <li>Impianti in titanio di grado medicale con superfici attive</li>
-                            <li>Chirurgia guidata computerizzata per precisione millimetrica</li>
-                            <li>Carico immediato quando possibile</li>
-                            <li>Protesi definitiva dopo l'osteointegrazione</li>
-                        </ul>
-                        <p>Offriamo garanzie estese sui nostri impianti e un follow-up personalizzato.</p>
-
-                    <?php elseif($treatment['title'] == "ORTODONZIA"): ?>
-                        <p>Il nostro approccio ortodontico è personalizzato in base alle esigenze di ogni paziente:</p>
-                        <ul>
-                            <li>Diagnosi completa con analisi cefalometrica e modelli 3D</li>
-                            <li>Pianificazione del trattamento su misura</li>
-                            <li>Scelta tra apparecchi tradizionali, autoleganti o allineatori trasparenti</li>
-                            <li>Controlli regolari per monitorare i progressi</li>
-                            <li>Regolazioni periodiche per ottimizzare i risultati</li>
-                            <li>Contenzione post-trattamento per mantenere l'allineamento</li>
-                        </ul>
-                        <p>Disponiamo di tecnologie all'avanguardia per trattamenti più rapidi e confortevoli.</p>
-
-                    <?php endif; ?>
+                    <?php echo $treatments[$index - 1]["html"]; ?>
                 </div>
             </div>
         </div>

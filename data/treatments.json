@@ -2,31 +2,37 @@
   {
     "alt": "Igiene dentale",
     "title": "IGIENE E PREVENZIONE",
-    "content": "Pulizie professionali, fluoroprofilassi e programmi personalizzati per mantenere la salute dei tuoi denti."
+    "content": "Pulizie professionali, fluoroprofilassi e programmi personalizzati per mantenere la salute dei tuoi denti.",
+    "html": "<p>Il nostro approccio all'igiene dentale e alla prevenzione è completo e personalizzato per ogni paziente. Il processo include:</p>\n                        <ul>\n                            <li>Valutazione iniziale dello stato di salute orale</li>\n                            <li>Pulizia professionale con strumentazione ultrasonica</li>\n                            <li>Rimozione del tartaro sopra e sotto gengivale</li>\n                            <li>Lucidatura dei denti per prevenire l'accumulo di placca</li>\n                            <li>Fluoroprofilassi per rinforzare lo smalto</li>\n                            <li>Consigli personalizzati per l'igiene domiciliare</li>\n                        </ul>\n                        <p>Raccomandiamo sedute di igiene professionale ogni 6-12 mesi a seconda delle necessità individuali.</p>\n"
   },
   {
     "alt": "Otturazioni",
     "title": "ODONTOIATRIA CONSERVATIVA",
-    "content": "Otturazioni estetiche in composito per curare le carie preservando la struttura dentale."
+    "content": "Otturazioni estetiche in composito per curare le carie preservando la struttura dentale.",
+    "html": "<p>La nostra odontoiatria conservativa mira a preservare il dente naturale attraverso tecniche minimamente invasive:</p>\n                        <ul>\n                            <li>Diagnosi precoce delle lesioni cariose con tecnologia digitale</li>\n                            <li>Rimozione del tessuto cariato con massimo risparmio di struttura sana</li>\n                            <li>Ricostruzione con materiali compositi estetici</li>\n                            <li>Adesione stratificata per garantire durata e resistenza</li>\n                            <li>Finitura e lucidatura per ripristinare la naturale anatomia</li>\n                        </ul>\n                        <p>Utilizziamo solo materiali di alta qualità certificati per garantire risultati duraturi.</p>\n"
   },
   {
     "alt": "Sbiancamento",
     "title": "SBIANCAMENTO DENTALE",
-    "content": "Trattamenti sbiancanti professionali per un sorriso più luminoso e naturale."
+    "content": "Trattamenti sbiancanti professionali per un sorriso più luminoso e naturale.",
+    "html": "<p>Il nostro trattamento di sbiancamento dentale professionale offre risultati visibili in poche sedute:</p>\n                        <ul>\n                            <li>Valutazione iniziale del colore e dello stato dei denti</li>\n                            <li>Pulizia professionale preliminare</li>\n                            <li>Applicazione di gel sbiancante ad alta concentrazione</li>\n                            <li>Attivazione con luce LED per potenziare l'effetto</li>\n                            <li>Idratazione e desensibilizzazione post-trattamento</li>\n                            <li>Kit di mantenimento per risultati prolungati</li>\n                        </ul>\n                        <p>Lo sbiancamento è sicuro e controllato, con risultati che possono schiarire i denti fino a 8 tonalità.</p>\n"
   },
   {
     "alt": "Protesi",
     "title": "PROTESI DENTARIE",
-    "content": "Soluzioni fisse e mobili per ripristinare la funzione masticatoria e l'estetica del sorriso."
+    "content": "Soluzioni fisse e mobili per ripristinare la funzione masticatoria e l'estetica del sorriso.",
+    "html": "<p>Le nostre soluzioni protesiche sono personalizzate per ripristinare funzione ed estetica:</p>\n                        <ul>\n                            <li>Analisi digitale della masticazione e dell'occlusione</li>\n                            <li>Progettazione CAD/CAM delle protesi</li>\n                            <li>Scelta tra corone in zirconia, disilicato di litio o metallo-ceramica</li>\n                            <li>Protesi mobili con attacchi di precisione</li>\n                            <li>Prove estetiche per garantire un risultato naturale</li>\n                            <li>Applicazione e regolazioni finali</li>\n                        </ul>\n                        <p>Utilizziamo solo materiali di prima qualità certificati per garantire comfort e durata.</p>\n"
   },
   {
     "alt": "Impianti",
     "title": "IMPLANTOLOGIA",
-    "content": "Impianti dentali di alta qualità per sostituire i denti mancanti con soluzioni permanenti."
+    "content": "Impianti dentali di alta qualità per sostituire i denti mancanti con soluzioni permanenti.",
+    "html": "<p>La nostra procedura implantologica segue protocolli rigorosi per massimizzare il successo:</p>\n                        <ul>\n                            <li>Diagnostica avanzata con CBCT 3D</li>\n                            <li>Pianificazione digitale della posizione implantare</li>\n                            <li>Impianti in titanio di grado medicale con superfici attive</li>\n                            <li>Chirurgia guidata computerizzata per precisione millimetrica</li>\n                            <li>Carico immediato quando possibile</li>\n                            <li>Protesi definitiva dopo l'osteointegrazione</li>\n                        </ul>\n                        <p>Offriamo garanzie estese sui nostri impianti e un follow-up personalizzato.</p>\n"
   },
   {
     "alt": "Ortodonzia",
     "title": "ORTODONZIA",
-    "content": "Apparecchi fissi e invisibili per allineare i denti e migliorare l'occlusione."
+    "content": "Apparecchi fissi e invisibili per allineare i denti e migliorare l'occlusione.",
+    "html": "<p>Il nostro approccio ortodontico è personalizzato in base alle esigenze di ogni paziente:</p>\n                        <ul>\n                            <li>Diagnosi completa con analisi cefalometrica e modelli 3D</li>\n                            <li>Pianificazione del trattamento su misura</li>\n                            <li>Scelta tra apparecchi tradizionali, autoleganti o allineatori trasparenti</li>\n                            <li>Controlli regolari per monitorare i progressi</li>\n                            <li>Regolazioni periodiche per ottimizzare i risultati</li>\n                            <li>Contenzione post-trattamento per mantenere l'allineamento</li>\n                        </ul>\n                        <p>Disponiamo di tecnologie all'avanguardia per trattamenti più rapidi e confortevoli.</p>\n"
   }
 ]
