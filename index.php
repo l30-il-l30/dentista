@@ -80,7 +80,7 @@
             <!-- Colonna Immagine (tonda) -->
             <div class="about-image">
                 <div class="profile-frame">
-                    <img src="assets/img/dottoressa.jpg" alt="Dott.ssa Grazia Diodovich" class="profile-img">
+                    <img src="assets/img/dottoressa.jpeg" alt="Dott.ssa Grazia Diodovich" class="profile-img">
                 </div>
             </div>
 
