@@ -91,18 +91,11 @@ $treatment = $treatments[$index];
         <div class="container">
             <h2 class="section-title">Galleria del Trattamento</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="../assets/img/atmosfera/2.jpg" alt="Studio esterno">
-                </div>
-                <div class="gallery-item">
-                    <img src="../assets/img/atmosfera/4.jpg" alt="Sala operatoria">
-                </div>
-                <div class="gallery-item">
-                    <img src="../assets/img/atmosfera/3.jpg" alt="Sala d'attesa">
-                </div>
-                <div class="gallery-item">
-                    <img src="../assets/img/atmosfera/5.jpg" alt="Area relax">
-                </div>
+                <?php for($i = 1; $i <= 4; $i++) : ?>
+                    <div class="gallery-item">
+                        <img src="../assets/img/<?php echo htmlspecialchars(strtolower($treatment['title'])); ?>/<?php echo htmlspecialchars($i); ?>.png" alt="img">
+                    </div>
+                <?php endfor; ?>
             </div>
         </div>
     </section>
