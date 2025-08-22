@@ -67,7 +67,7 @@ $treatment = $treatments[$index];
     <!-- Hero Section per il trattamento specifico -->
     <section class="treatment-hero">
         <div class="treatment-hero-image">
-            <img src="../assets/img/treatments/<?php echo $index + 1; ?>.jpg" alt="<?php echo htmlspecialchars($treatment['alt']); ?>" loading="lazy">
+            <img src="../assets/img/treatments/<?php echo $index + 1; ?>.png" alt="<?php echo htmlspecialchars($treatment['alt']); ?>" loading="lazy">
         </div>
         <div class="treatment-hero-content">
             <h1><?php echo htmlspecialchars($treatment['title']); ?></h1>
@@ -80,7 +80,7 @@ $treatment = $treatments[$index];
             <div class="description-content">
                 <h2 class="section-title">Processo di Trattamento</h2>
                 <div class="description-text">
-                    <?php echo $treatments[$index - 1]["html"]; ?>
+                    <?php echo $treatments[$index]["html"]; ?>
                 </div>
             </div>
         </div>
