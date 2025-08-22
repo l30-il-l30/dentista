@@ -195,21 +195,6 @@
               <label for="preventivo-email">Email</label>
               <input type="email" id="preventivo-email" name="email" required placeholder="La tua email" autocomplete="off">
             </div>
-            <div class="form-group file-upload-group">
-              <label for="preventivo-lastre">Carica lastre (OPT/Panoramica) <span class="required">*</span></label>
-              <div class="file-upload-wrapper">
-                <input type="file" id="preventivo-lastre" name="lastre" accept=".pdf" multiple required>
-                <label for="preventivo-lastre" class="file-upload-label">
-                  <svg viewBox="0 0 24 24" class="upload-icon">
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z M8,15V13H16V15H8M8,11V9H13V11H8Z"/>
-                  </svg>
-                  <span>Scegli file</span>
-                </label>
-                <div class="file-info">Nessun file selezionato</div>
-              </div>
-              <small>Puoi caricare più file (solo formato PDF accettato)</small>
-              <div id="file-error" class="error-message" style="display: none; color: red;"></div>
-            </div>
           </div>
 
           <div class="form-group">
@@ -238,78 +223,78 @@
     </div>
   </section>
 
-  <section id="contact" class="section contact-section">
-    <div class="container">
-      <h2 class="section-title">CONTATTACI</h2>
-      <p class="section-subtitle">Prenota una visita o richiedi informazioni</p>
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">CONTATTACI</h2>
+            <p class="section-subtitle">Prenota una visita o richiedi informazioni</p>
 
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item large-icon">
-            <div class="contact-details">
-              <h3>Indirizzo</h3>
-              <p>Via Don Tonino Bello,5<br>Bisceglie, 76011</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item large-icon">
+                        <div class="contact-details">
+                            <h3>Indirizzo</h3>
+                            <p>Via Don Tonino Bello,5<br>Bisceglie, 76011</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item large-icon">
+                        <div class="contact-details">
+                            <h3>Telefono</h3>
+                            <p><a href="tel:3488585578">348 858 5578</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item large-icon">
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>
+                                <a href="mailto:graziadiodovich@gmail.com">graziadiodovich@gmail.com</a><br>
+                                <a href="mailto:studiodentisticosantandrea@gmail.com">studiodentisticosantandrea@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item large-icon">
+                        <div class="contact-details">
+                            <h3>Orari</h3>
+                            <p>Lunedì: 15:00–20:30<br>
+                                Martedì: 9:00 - 12:00 | 15:00–20:30<br>
+                                Mercoledì: 15:00–20:30<br>
+                                Giovedì: 15:00–20:30<br>
+                                Venerdì: 9:00 - 12:00 | 15:00–20:30<br>
+                                Sabato: 10:00–12:30<br>
+                                Domenica: chiuso</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="appointment-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder="Nome" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="surname" name="surname" required placeholder="Cognome" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder="Email" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" required placeholder="Telefono" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" required placeholder="Messaggio" maxlength="2000" autocomplete="off"></textarea>
+                        </div>
+                        <button type="submit" id="send-mail" class="btn btn-primary">Invia richiesta</button>
+                    </form>
+                </div>
             </div>
-          </div>
 
-          <div class="contact-item large-icon">
-            <div class="contact-details">
-              <h3>Telefono</h3>
-              <p><a href="tel:3488585578">348 858 5578</a></p>
+            <div class="map-container">
+                <div id="map"></div>
             </div>
-          </div>
-
-         <div class="contact-item large-icon">
-  <div class="contact-details">
-    <h3>Email</h3>
-    <p>
-      <a href="mailto:graziadiodovich@gmail.com">graziadiodovich@gmail.com</a><br>
-      <a href="mailto:studiodentisticosantandrea@gmail.com">studiodentisticosantandrea@gmail.com</a>
-    </p>
-  </div>
-</div>
-
-          <div class="contact-item large-icon">
-            <div class="contact-details">
-              <h3>Orari</h3>
-              <p>Lunedì: 15:00–20:30<br>
-                Martedì: 9:00 - 12:00 | 15:00–20:30<br>
-                Mercoledì: 15:00–20:30<br>
-                Giovedì: 15:00–20:30<br>
-                Venerdì: 9:00 - 12:00 | 15:00–20:30<br>
-                Sabato: 10:00–12:30<br>
-                Domenica: chiuso</p>
-            </div>
-          </div>
         </div>
-
-        <div class="contact-form">
-          <form id="appointment-form">
-            <div class="form-group">
-              <input type="text" id="name" name="name" required placeholder="Nome" autocomplete="off">
-            </div>
-            <div class="form-group">
-              <input type="text" id="surname" name="surname" required placeholder="Cognome" autocomplete="off">
-            </div>
-            <div class="form-group">
-              <input type="email" id="email" name="email" required placeholder="Email" autocomplete="off">
-            </div>
-            <div class="form-group">
-              <input type="tel" id="phone" name="phone" required placeholder="Telefono" autocomplete="off">
-            </div>
-            <div class="form-group">
-              <textarea id="message" name="message" rows="4" required placeholder="Messaggio" maxlength="2000" autocomplete="off"></textarea>
-            </div>
-            <button type="submit" id="send-mail" class="btn btn-primary">Invia richiesta</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="map-container">
-        <div id="map"></div>
-      </div>
-    </div>
-  </section>
+    </section>
 </main>
 
 <footer class="footer">
@@ -393,8 +378,7 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="assets/js/leaflet-map.js"></script>
 <script src="assets/js/main.js"></script>
-<script src="assets/js/contactEmail.js"></script>
-<script src="assets/js/preventivoEmail.js"></script>
+<script src="assets/js/email.js"></script>
 <script src="assets/js/toast.js"></script>
 <script src="assets/js/carousel.js"></script>
 
