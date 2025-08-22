@@ -134,7 +134,7 @@
             <?php foreach($json as $index => $content): ?>
                 <a href="./pages/service.php?i=<?php echo htmlspecialchars($index+1) ?>" class="treatment-card">
                     <div class="treatment-image">
-                        <img src="assets/img/treatments/<?php echo htmlspecialchars($index+1) ?>.jpg" alt="<?php echo htmlspecialchars($content["alt"]) ?>" loading="lazy">
+                        <img src="assets/img/treatments/<?php echo htmlspecialchars($index+1) ?>.png" alt="<?php echo htmlspecialchars($content["alt"]) ?>" loading="lazy">
                     </div>
                     <div class="treatment-content">
                         <h3><?php echo htmlspecialchars($content["title"]) ?></h3>
