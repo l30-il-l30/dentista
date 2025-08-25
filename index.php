@@ -1,8 +1,30 @@
 <?php
     session_start();
+    
+    // Configurazione cache per performance
+    $cache_time = 3600; // 1 ora
+    header("Cache-Control: public, max-age=$cache_time");
+    header("Expires: " . gmdate('D, d M Y H:i:s', time() + $cache_time) . ' GMT');
 
-    $data = file_get_contents("./data/treatments.json");
-    $json = json_decode($data, true);
+    // Caricamento dati con gestione errori
+    try {
+        $data = file_get_contents("./data/treatments.json");
+        if ($data === false) {
+            throw new Exception("Impossibile leggere il file treatments.json");
+        }
+        $json = json_decode($data, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new Exception("Errore nel parsing JSON: " . json_last_error_msg());
+        }
+    } catch (Exception $e) {
+        error_log("Errore caricamento trattamenti: " . $e->getMessage());
+        $json = []; // Array vuoto come fallback
+    }
+    
+    // Meta data per SEO
+    $page_title = "Studio Dentistico Sant'Andrea | Dott.ssa Grazia Diodovich - Bisceglie";
+    $page_description = "Studio Dentistico Sant'Andrea a Bisceglie. La Dott.ssa Grazia Diodovich offre cure dentali di alta qualità: implantologia, ortodonzia, igiene dentale, protesi. Prenota la tua visita.";
+    $page_keywords = "dentista Bisceglie, studio dentistico, implantologia, ortodonzia, igiene dentale, protesi dentarie, Grazia Diodovich";
 ?>
 
 <!DOCTYPE html>
@@ -10,33 +32,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="description" content="Studio Dentistico Sant'Andrea - La Dott.ssa Grazia Diodovich offre cure dentali di alta qualità con approccio personalizzato">
-  <title>Studio Dentistico Sant'Andrea | Dott.ssa Grazia Diodovich</title>
+  <meta name="description" content="<?php echo htmlspecialchars($page_description); ?>">
+  <meta name="keywords" content="<?php echo htmlspecialchars($page_keywords); ?>">
+  <meta name="author" content="Dott.ssa Grazia Diodovich">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="<?php echo htmlspecialchars($page_title); ?>">
+  <meta property="og:description" content="<?php echo htmlspecialchars($page_description); ?>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.studiodentisticosantandrea.it">
+  <meta property="og:image" content="https://www.studiodentisticosantandrea.it/assets/img/logo.svg">
+  <meta property="og:locale" content="it_IT">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?php echo htmlspecialchars($page_title); ?>">
+  <meta name="twitter:description" content="<?php echo htmlspecialchars($page_description); ?>">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DentalClinic",
+    "name": "Studio Dentistico Sant'Andrea",
+    "description": "<?php echo htmlspecialchars($page_description); ?>",
+    "url": "https://www.studiodentisticosantandrea.it",
+    "telephone": "+393488585578",
+    "email": "graziadiodovich@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Don Tonino Bello, 5",
+      "addressLocality": "Bisceglie",
+      "postalCode": "76011",
+      "addressRegion": "BT",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "41.2289786",
+      "longitude": "16.490343"
+    },
+    "openingHours": [
+      "Mo 15:00-20:30",
+      "Tu 09:00-12:00,15:00-20:30", 
+      "We 15:00-20:30",
+      "Th 15:00-20:30",
+      "Fr 09:00-12:00,15:00-20:30",
+      "Sa 10:00-12:30"
+    ],
+    "priceRange": "€€",
+    "image": "https://www.studiodentisticosantandrea.it/assets/img/logo.svg"
+  }
+  </script>
+  
+  <title><?php echo htmlspecialchars($page_title); ?></title>
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" as="style">
+  <link rel="preload" href="assets/css/style.css" as="style">
+  <link rel="preload" href="assets/img/background.jpg" as="image">
+  
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-  <!-- Aggiungi Nunito Bold da Google Fonts -->
+  
+  <!-- Google Fonts con display=swap per performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
-  <style>
-    /* Applica Nunito Bold a tutto il testo */
-    body, h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-    }
-  </style>
+  
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/animations.css">
+  
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://www.studiodentisticosantandrea.it">
 </head>
 <body>
+<!-- Skip to main content per accessibilità -->
+<a href="#main-content" class="skip-link">Vai al contenuto principale</a>
+
 <header class="header">
   <div class="container">
     <div class="header-pre-mobile">
-      <a href="index.html" class="logo">
+      <a href="index.php" class="logo" aria-label="Torna alla homepage">
         <img src="assets/img/logo.svg" alt="Studio Dentistico Sant'Andrea">
       </a>
-      <button class="hamburger" aria-label="Menu">
+      <button class="hamburger" aria-label="Apri menu di navigazione" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -45,30 +126,30 @@
 
     <nav class="nav">
       <ul class="nav-list">
-        <li><a href="#about">Chi sono</a></li>
-        <li><a href="#services">Trattamenti</a></li>
-        <li><a href="#preventivo">Preventivo</a></li>
-        <li><a href="#atmosphere">Atmosfera</a></li>
-        <li><a href="#contact">Contatti</a></li>
+        <li><a href="#about" aria-label="Vai alla sezione Chi sono">Chi sono</a></li>
+        <li><a href="#services" aria-label="Vai alla sezione Trattamenti">Trattamenti</a></li>
+        <li><a href="#preventivo" aria-label="Vai alla sezione Preventivo">Preventivo</a></li>
+        <li><a href="#atmosphere" aria-label="Vai alla sezione Atmosfera">Atmosfera</a></li>
+        <li><a href="#contact" aria-label="Vai alla sezione Contatti">Contatti</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main-content">
   <section id="home" class="hero">
     <div class="hero-background"></div>
     <div class="hero-content">
       <h1 class="hero-title">SORRIDI CON FIDUCIA</h1>
       <p class="hero-subtitle">Cure dentali personalizzate nello Studio Dentistico Sant'Andrea</p>
       <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">Prenota una visita adesso</a>
-        <a href="#preventivo" class="btn btn-secondary">Preventivo gratuito</a>
+        <a href="#contact" class="btn btn-primary" aria-label="Prenota una visita">Prenota una visita adesso</a>
+        <a href="#preventivo" class="btn btn-secondary" aria-label="Richiedi preventivo gratuito">Preventivo gratuito</a>
       </div>
     </div>
-    <a href="#about" class="scroll-down">
+    <a href="#about" class="scroll-down" aria-label="Scorri per scoprire di più">
       <span>Scopri di più</span>
-      <svg viewBox="0 0 24 24">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
       </svg>
     </a>
@@ -132,13 +213,13 @@
         <div class="carousel-track-container">
           <div class="carousel-track">
             <?php foreach($json as $index => $content): ?>
-                <a href="./pages/service.php?i=<?php echo htmlspecialchars($index+1) ?>" class="treatment-card">
+                <a href="./pages/service.php?i=<?php echo htmlspecialchars($index+1); ?>" class="treatment-card" aria-label="Scopri di più su <?php echo htmlspecialchars($content['title']); ?>">
                     <div class="treatment-image">
-                        <img src="assets/img/treatments/<?php echo htmlspecialchars($index+1) ?>.png" alt="<?php echo htmlspecialchars($content["alt"]) ?>" loading="lazy">
+                        <img src="assets/img/treatments/<?php echo htmlspecialchars($index+1); ?>.png" alt="<?php echo htmlspecialchars($content['alt']); ?>" loading="lazy" width="300" height="220">
                     </div>
                     <div class="treatment-content">
-                        <h3><?php echo htmlspecialchars($content["title"]) ?></h3>
-                        <p><?php echo htmlspecialchars($content["content"]) ?></p>
+                        <h3><?php echo htmlspecialchars($content['title']); ?></h3>
+                        <p><?php echo htmlspecialchars($content['content']); ?></p>
                     </div>
                 </a>
             <?php endforeach; ?>
@@ -147,12 +228,12 @@
 
         <div class="carousel-nav">
           <button class="carousel-prev" aria-label="Trattamento precedente">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/>
             </svg>
           </button>
           <button class="carousel-next" aria-label="Trattamento successivo">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
             </svg>
           </button>
@@ -216,7 +297,7 @@
       <div class="gallery-grid">
         <?php for($i = 0; $i <6; $i++): ?>
           <div class="gallery-item">
-              <img src="assets/img/atmosfera/<?php echo htmlspecialchars($i+1) ?>.jpg" alt="img">
+              <img src="assets/img/atmosfera/<?php echo htmlspecialchars($i+1); ?>.jpg" alt="Ambiente dello studio dentistico - Immagine <?php echo $i+1; ?>" loading="lazy" width="300" height="300">
           </div>
         <?php endfor; ?>
       </div>
@@ -240,7 +321,7 @@
                     <div class="contact-item large-icon">
                         <div class="contact-details">
                             <h3>Telefono</h3>
-                            <p><a href="tel:3488585578">348 858 5578</a></p>
+                            <p><a href="tel:+393488585578" aria-label="Chiama il numero 348 858 5578">348 858 5578</a></p>
                         </div>
                     </div>
 
@@ -248,8 +329,8 @@
                         <div class="contact-details">
                             <h3>Email</h3>
                             <p>
-                                <a href="mailto:graziadiodovich@gmail.com">graziadiodovich@gmail.com</a><br>
-                                <a href="mailto:studiodentisticosantandrea@gmail.com">studiodentisticosantandrea@gmail.com</a>
+                                <a href="mailto:graziadiodovich@gmail.com" aria-label="Invia email a graziadiodovich@gmail.com">graziadiodovich@gmail.com</a><br>
+                                <a href="mailto:studiodentisticosantandrea@gmail.com" aria-label="Invia email a studiodentisticosantandrea@gmail.com">studiodentisticosantandrea@gmail.com</a>
                             </p>
                         </div>
                     </div>
@@ -269,21 +350,31 @@
                 </div>
 
                 <div class="contact-form">
-                    <form id="appointment-form">
+                    <form id="appointment-form" novalidate>
                         <div class="form-group">
-                            <input type="text" id="name" name="name" required placeholder="Nome" autocomplete="off">
+                            <label for="name" class="sr-only">Nome</label>
+                            <input type="text" id="name" name="name" required placeholder="Nome" autocomplete="given-name" aria-describedby="name-error">
+                            <span id="name-error" class="error-message" role="alert"></span>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="surname" name="surname" required placeholder="Cognome" autocomplete="off">
+                            <label for="surname" class="sr-only">Cognome</label>
+                            <input type="text" id="surname" name="surname" required placeholder="Cognome" autocomplete="family-name" aria-describedby="surname-error">
+                            <span id="surname-error" class="error-message" role="alert"></span>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required placeholder="Email" autocomplete="off">
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="Email" autocomplete="email" aria-describedby="email-error">
+                            <span id="email-error" class="error-message" role="alert"></span>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" required placeholder="Telefono" autocomplete="off">
+                            <label for="phone" class="sr-only">Telefono</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="Telefono" autocomplete="tel" aria-describedby="phone-error">
+                            <span id="phone-error" class="error-message" role="alert"></span>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" required placeholder="Messaggio" maxlength="2000" autocomplete="off"></textarea>
+                            <label for="message" class="sr-only">Messaggio</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Messaggio" maxlength="2000" autocomplete="off" aria-describedby="message-error"></textarea>
+                            <span id="message-error" class="error-message" role="alert"></span>
                         </div>
                         <button type="submit" id="send-mail" class="btn btn-primary">Invia richiesta</button>
                     </form>
@@ -291,7 +382,7 @@
             </div>
 
             <div class="map-container">
-                <div id="map"></div>
+                <div id="map" role="img" aria-label="Mappa della posizione dello Studio Dentistico Sant'Andrea"></div>
             </div>
         </div>
     </section>
@@ -348,43 +439,44 @@
           Via don Tonino Bello, 5<br>76011 Bisceglie BT
         </address>
         <address>
-          <svg class="footer-icon" viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
-          <a href="tel:3488585578">348 858 5578</a>
+          <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
+          <a href="tel:+393488585578">348 858 5578</a>
         </address>
         <address>
-          <svg class="footer-icon" viewBox="0 0 24 24"><path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/></svg>
+          <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/></svg>
           <a href="mailto:graziadiodovich@gmail.com">graziadiodovich@gmail.com</a><br>
           <a href="mailto:studiodentisticosantandrea@gmail.com">studiodentisticosantandrea@gmail.com</a>
-</address>
-</div>
-</div>
+        </address>
+      </div>
+    </div>
 
-
-<div class="footer-qr">
-  <div class="qr-container">
-    <img src="assets/img/qr-code.png" alt="QR Code Contatti" class="qr-code">
-    <p>Scansiona per lasciare una recensione</p>
-  </div>
-    <!-- Footer bottom -->
-    <div class="footer-bottom">
-      <div class="footer-legal">
-        <p>&copy; 2025 Studio Dentistico Sant'Andrea. Tutti i diritti riservati.</p>
-        <p>P.IVA: 05947740725</p>
+    <div class="footer-qr">
+      <div class="qr-container">
+        <img src="assets/img/qr-code.png" alt="QR Code per lasciare una recensione" class="qr-code" width="120" height="120">
+        <p>Scansiona per lasciare una recensione</p>
+      </div>
+      <!-- Footer bottom -->
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <p>&copy; 2025 Studio Dentistico Sant'Andrea. Tutti i diritti riservati.</p>
+          <p>P.IVA: 05947740725</p>
+        </div>
       </div>
     </div>
   </div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script src="assets/js/leaflet-map.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/email.js"></script>
-<script src="assets/js/toast.js"></script>
-<script src="assets/js/carousel.js"></script>
+<!-- Scripts caricati in modo asincrono per performance -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" defer></script>
+<script src="assets/js/leaflet-map.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/email.js" defer></script>
+<script src="assets/js/toast.js" defer></script>
+<script src="assets/js/carousel.js" defer></script>
 
 <div class="whatsapp-float">
   <a href="https://wa.me/393488585578" target="_blank" rel="noopener noreferrer" aria-label="Contattaci su WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="60" height="60">
     <span class="whatsapp-tooltip">Scrivici su WhatsApp!</span>
   </a>
 </div>
